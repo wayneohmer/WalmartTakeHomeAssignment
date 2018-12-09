@@ -10,30 +10,39 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailDescriptionLabel: UILabel!
-
-
-    func configureView() {
-        // Update the user interface for the detail item.
-        if let detail = detailItem {
-            if let label = detailDescriptionLabel {
-                label.text = detail.description
-            }
-        }
-    }
-
+    var product:ProductModel?
+    @IBOutlet var productImageView: UIImageView!
+    @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet var shortDescriptionLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        configureView()
+        if let product = self.product {
+            
+            self.productImageView.image = product.image
+            if let shortHtmlData = NSString(string: product.product.shortDescription ?? "").data(using: String.Encoding.unicode.rawValue) {
+                do {
+                    let attributedString = try NSAttributedString(data: shortHtmlData, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                    shortDescriptionLabel.attributedText = attributedString
+                } catch {
+                    
+                }
+            }
+            if let longHtmlData = NSString(string: "\n\n\(product.product.longDescription ?? "")").data(using: String.Encoding.unicode.rawValue) {
+                do {
+                    let attributedString = try NSAttributedString(data: longHtmlData, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                   
+                    descriptionTextView.attributedText = attributedString
+                } catch {
+                    
+                }
+            }
+            
+            
+        }
+        
     }
 
-    var detailItem: NSDate? {
-        didSet {
-            // Update the view.
-            configureView()
-        }
-    }
 
 
 }

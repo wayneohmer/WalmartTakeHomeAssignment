@@ -1,0 +1,27 @@
+{
+    "products": [{
+        "productId": "003e3e6a-3f84-43ac-8ef3-a5ae2db0f80e",
+        "productName": "Ellerton TV Console",
+        "shortDescription": "<p><span style=\"color:#FF0000;\"><b>White Glove Delivery Included</b></span></p>\n\n<ul>\n\t<li>Excellent for the gamer, movie enthusiest, or interior decorator in your home</li>\n\t<li>Built-in power strip for electronics</li>\n\t<li>Hardwood solids and cherry veneers</li>\n</ul>\n",
+        "longDescription": "<p>The Ellerton media console is well-suited for today&rsquo;s casual lifestyle. Its elegant style and expert construction will make it a centerpiece in any home. Soundly constructed, the Ellerton uses hardwood solids &amp; cherry veneers elegantly finished in a rich dark cherry finish. &nbsp;With ample storage for electronics &amp; media, it also cleverly allows for customization with three choices of interchangeable door panels.</p>\n",
+        "price": "$949.00",
+        "productImage": "/images/image2.jpeg",
+        "reviewRating": 2,
+        "reviewCount": 1,
+        "inStock": true
+    }, {
+        "productId": "0150f9b5-8918-4fd1-92b3-fc032cc6c684",
+        "productName": "Samsung 50\" Class 4K Ultra HD LED Smart TV - UN50JU650DFXZA",
+        "shortDescription": "<ul>\n\t<li>Resolution: 4K Ultra HD&nbsp;</li>\n\t<li>Refresh Rate: 60Hz w/ 120 Clear Motion Rate</li>\n\t<li>HDMI Inputs: 4</li>\n</ul>\n",
+        "longDescription": "<p>With 4K UHD resolution you&rsquo;ll enjoy a picture with 4X the detail of Full HD. Watch and play your way with the advanced Samsung Smart TV platform that lets you quickly and easily access your favorite content. Upgrade all lower resolution media to a stunning near ultra high-definition experience with enhanced detail and optimized picture quality. Experience UHD picture quality with deeper blacks, purer whites, brighter colors, and enhanced detail in every image. Enjoy improved fast-action moving picture resolution at Motion Rate 120 with outstanding refresh rate, processing speed and backlight technology. The screen mirroring feature allows you to mirror your phone or other compatible mobile device&rsquo;s screen onto the TVs screen wirelessly instead of your devices smaller screen for showing content, media playback, or other function. Have your Samsung Smart TV act as an alarm when synchronized with your other Samsung mobile devices. Use the large screen to display important items such as the time, weather, and your daily schedule.</p>\n",
+        "price": "$928.00",
+        "productImage": "/images/image5.jpeg",
+        "reviewRating": 4.5,
+        "reviewCount": 2,
+        "inStock": true
+    }],
+    "totalProducts": 224,
+    "pageNumber": 1,
+    "pageSize": 2,
+    "statusCode": 200
+}

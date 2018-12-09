@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7SP-QB-94s">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detail-->
+        <scene sceneID="yfK-LU-mtC">
+            <objects>
+                <viewController title="Detail" id="PYB-pd-dhR" customClass="DetailViewController" customModule="WalmartTakeHomeAssingment" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KXi-co-HJ1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cKY-FA-l4x">
+                                <rect key="frame" x="16" y="80" width="343" height="200"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gSV-OA-yaF">
+                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="200"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cl9-rt-mk4">
+                                        <rect key="frame" x="120.5" y="0.0" width="222.5" height="200"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Label">
+                                                <attributes>
+                                                    <font key="NSFont" metaFont="system" size="17"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="App-fw-z2X">
+                                <rect key="frame" x="16" y="296" width="343" height="355"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PxM-tC-yJ5" firstAttribute="trailing" secondItem="App-fw-z2X" secondAttribute="trailing" constant="16" id="0MA-9N-gTN"/>
+                            <constraint firstItem="gSV-OA-yaF" firstAttribute="width" relation="lessThanOrEqual" secondItem="KXi-co-HJ1" secondAttribute="width" multiplier="30%" id="8sZ-Ac-rqm"/>
+                            <constraint firstItem="PxM-tC-yJ5" firstAttribute="trailing" secondItem="cKY-FA-l4x" secondAttribute="trailing" constant="16" id="LVj-aF-yBp"/>
+                            <constraint firstItem="App-fw-z2X" firstAttribute="leading" secondItem="PxM-tC-yJ5" secondAttribute="leading" constant="16" id="VXA-j4-1su"/>
+                            <constraint firstItem="cKY-FA-l4x" firstAttribute="height" secondItem="KXi-co-HJ1" secondAttribute="height" multiplier="30%" id="YAP-5T-xb7"/>
+                            <constraint firstItem="App-fw-z2X" firstAttribute="top" secondItem="cKY-FA-l4x" secondAttribute="bottom" constant="16" id="Yaa-bW-Wxm"/>
+                            <constraint firstItem="cKY-FA-l4x" firstAttribute="top" secondItem="PxM-tC-yJ5" secondAttribute="top" constant="16" id="a2E-Ow-4l8"/>
+                            <constraint firstItem="PxM-tC-yJ5" firstAttribute="bottom" secondItem="App-fw-z2X" secondAttribute="bottom" constant="16" id="hs7-Ci-Yuc"/>
+                            <constraint firstItem="cKY-FA-l4x" firstAttribute="leading" secondItem="PxM-tC-yJ5" secondAttribute="leading" constant="16" id="j3e-i0-a8e"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PxM-tC-yJ5"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Detail" id="V0z-0M-xFd"/>
+                    <connections>
+                        <outlet property="descriptionTextView" destination="App-fw-z2X" id="EyI-m5-sZx"/>
+                        <outlet property="productImageView" destination="gSV-OA-yaF" id="JDG-Vi-Fce"/>
+                        <outlet property="shortDescriptionLabel" destination="Cl9-rt-mk4" id="p8a-g5-U14"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ihU-SY-qhh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="128.18590704647679"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zw1-U1-MgC">
+            <objects>
+                <navigationController id="7SP-QB-94s" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="N4s-oH-gPI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="PYB-pd-dhR" kind="relationship" relationship="rootViewController" id="3Kx-Oj-fPU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KDd-AC-xEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-45" y="129"/>
+        </scene>
+    </scenes>
+</document>
