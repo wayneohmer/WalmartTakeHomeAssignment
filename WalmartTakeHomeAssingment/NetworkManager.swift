@@ -10,11 +10,15 @@ import UIKit
 
 class NetworkManager {
     
-    let productUrl = URL(string:"https://mobile-tha-server.firebaseapp.com/walmartproducts/1/15")!
+    let productUrlString = "https://mobile-tha-server.firebaseapp.com/walmartproducts/"
     
-    func fetchProducts(closure:@escaping (ProductsSumaryModel) -> Void) {
+    func fetchProducts(page: Int, closure:@escaping (ProductsSumaryModel) -> Void) {
         let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
 
+        guard let productUrl = URL(string: "\(self.productUrlString)\(page)/15") else {
+            return
+        }
+        
         let dataTask = defaultSession.dataTask(with: productUrl) { data, response, error in
             guard let jsonData = data else {
                 closure(ProductsSumaryModel())

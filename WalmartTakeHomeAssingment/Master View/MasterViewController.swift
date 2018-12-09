@@ -8,11 +8,14 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
-
+class MasterViewController: UITableViewController, UITableViewDataSourcePrefetching {
+    
     var detailViewController: DetailViewController? = nil
     var products = [ProductModel]()
-
+    var totalProducts = 0
+    var lastPageFetched = 1
+    var lastPageRequested = 1
+    let networkManager = NetworkManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +23,9 @@ class MasterViewController: UITableViewController {
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.tableFooterView = UIView()
 
-        let networkManager = NetworkManager()
+        self.tableView.prefetchDataSource = self
        
-        networkManager.fetchProducts(closure:self.handle)
+        networkManager.fetchProducts(page:self.lastPageRequested, closure:self.handle)
         
         if let split = splitViewController {
             let controllers = split.viewControllers
@@ -37,7 +40,9 @@ class MasterViewController: UITableViewController {
 
     func handle(productSummary:ProductsSumaryModel) {
         DispatchQueue.main.async {
-            self.products = productSummary.products
+            self.lastPageFetched = productSummary.productsSumaryStruct?.pageNumber ?? 0
+            self.totalProducts = productSummary.productsSumaryStruct?.totalProducts ?? self.totalProducts
+            self.products.append(contentsOf: productSummary.products)
             self.tableView.reloadData()
         }
     }
@@ -63,7 +68,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.products.count
+        return products.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -88,6 +93,16 @@ class MasterViewController: UITableViewController {
         return cell
     }
 
-
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+        for indexPath in indexPaths {
+            if indexPath.row >= self.products.count-1 && self.products.count < self.totalProducts {
+                self.lastPageRequested += 1
+                networkManager.fetchProducts(page:self.lastPageRequested, closure:self.handle)
+                break
+            }
+        }
+    }
+    
 }
 

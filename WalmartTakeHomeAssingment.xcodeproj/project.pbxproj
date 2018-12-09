@@ -74,6 +74,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B32BBF721BDB3C4006A1EBE /* Master View */ = {
+			isa = PBXGroup;
+			children = (
+				2B39BF0821BC546E00C01CB7 /* Main.storyboard */,
+				2B39BF0421BC546E00C01CB7 /* MasterViewController.swift */,
+				2B39BF3121BC64D900C01CB7 /* ProductTableViewCell.swift */,
+			);
+			path = "Master View";
+			sourceTree = "<group>";
+		};
+		2B32BBF821BDB3DB006A1EBE /* Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				2BF4873721BC7A8800A239DD /* Detail.storyboard */,
+				2B39BF0621BC546E00C01CB7 /* DetailViewController.swift */,
+			);
+			path = "Detail View";
+			sourceTree = "<group>";
+		};
 		2B39BEF621BC546E00C01CB7 = {
 			isa = PBXGroup;
 			children = (
@@ -95,17 +114,14 @@
 		2B39BF0121BC546E00C01CB7 /* WalmartTakeHomeAssingment */ = {
 			isa = PBXGroup;
 			children = (
-				2B39BF0821BC546E00C01CB7 /* Main.storyboard */,
-				2BF4873721BC7A8800A239DD /* Detail.storyboard */,
 				2B39BF0221BC546E00C01CB7 /* AppDelegate.swift */,
-				2B39BF0421BC546E00C01CB7 /* MasterViewController.swift */,
-				2B39BF3121BC64D900C01CB7 /* ProductTableViewCell.swift */,
-				2B39BF0621BC546E00C01CB7 /* DetailViewController.swift */,
+				2B39BF2F21BC62C600C01CB7 /* NetworkManager.swift */,
+				2B32BBF821BDB3DB006A1EBE /* Detail View */,
+				2B32BBF721BDB3C4006A1EBE /* Master View */,
+				2B39BF2E21BC628600C01CB7 /* Models */,
 				2B39BF0B21BC546F00C01CB7 /* Assets.xcassets */,
 				2B39BF0D21BC546F00C01CB7 /* LaunchScreen.storyboard */,
 				2B39BF1021BC546F00C01CB7 /* Info.plist */,
-				2B39BF2E21BC628600C01CB7 /* Models */,
-				2B39BF2F21BC62C600C01CB7 /* NetworkManager.swift */,
 			);
 			path = WalmartTakeHomeAssingment;
 			sourceTree = "<group>";
