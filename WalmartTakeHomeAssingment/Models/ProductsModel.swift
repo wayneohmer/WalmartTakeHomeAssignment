@@ -31,11 +31,12 @@ class ProductModel {
     }
     
     var image:UIImage?
+    
     var shortDesciprion:NSAttributedString? {
-        return self.convertHtmlFrom(string: self.product.shortDescription)
+        return sizefontsFrom(string: self.convertHtmlFrom(string: self.product.shortDescription))
     }
     var longDesciprion:NSAttributedString? {
-        return self.convertHtmlFrom(string: self.product.longDescription)
+        return sizefontsFrom(string: self.convertHtmlFrom(string: self.product.longDescription))
     }
     
     //Don't save requests if fetch has failed.
@@ -49,10 +50,30 @@ class ProductModel {
         self.fetchImage()
     }
     
-    func convertHtmlFrom(string:String?) -> NSAttributedString? {
+    func sizefontsFrom(string:NSMutableAttributedString?) -> NSAttributedString? {
+       
+        guard let string = string else {
+            return nil
+        }
+        string.enumerateAttribute(.font, in: NSRange(0..<string.length)) { value, range, stop in
+            if let font = value as? UIFont {
+                var fontMetrics = UIFontMetrics(forTextStyle: .body)
+                if font.fontDescriptor.symbolicTraits.contains(.traitBold) {
+                    fontMetrics = UIFontMetrics(forTextStyle: .title2)
+                }
+                let size = fontMetrics.scaledFont(for:UIFont.systemFont(ofSize: 17)).pointSize
+                let newFont = UIFont(name: font.fontName, size: size) ?? font
+                string.removeAttribute(.font, range: range)
+                string.addAttribute(.font, value: newFont, range: range)
+            }
+        }
+        return string
+    }
+    
+    func convertHtmlFrom(string:String?) -> NSMutableAttributedString? {
         if let shortHtmlData = NSString(string: string ?? "").data(using: String.Encoding.unicode.rawValue) {
             do {
-                let attributedString = try NSAttributedString(data: shortHtmlData, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                let attributedString = try NSMutableAttributedString(data: shortHtmlData, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
                 return attributedString
             } catch {
             }
