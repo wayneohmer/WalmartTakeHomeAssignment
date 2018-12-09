@@ -29,7 +29,15 @@ class ProductModel {
     var imageUrl: URL? {
         return URL(string: "https://mobile-tha-server.firebaseapp.com/\(self.product.productImage)")
     }
+    
     var image:UIImage?
+    var shortDesciprion:NSAttributedString? {
+        return self.convertHtmlFrom(string: self.product.shortDescription)
+    }
+    var longDesciprion:NSAttributedString? {
+        return self.convertHtmlFrom(string: self.product.longDescription)
+    }
+    
     //Don't save requests if fetch has failed.
     var fetchFailed = false
     
@@ -39,6 +47,17 @@ class ProductModel {
     required init(product: ProductStruct) {
         self.product = product
         self.fetchImage()
+    }
+    
+    func convertHtmlFrom(string:String?) -> NSAttributedString? {
+        if let shortHtmlData = NSString(string: string ?? "").data(using: String.Encoding.unicode.rawValue) {
+            do {
+                let attributedString = try NSAttributedString(data: shortHtmlData, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                return attributedString
+            } catch {
+            }
+        }
+        return nil
     }
     
     func requestImage(closure:@escaping (UIImage, String) -> Void) {

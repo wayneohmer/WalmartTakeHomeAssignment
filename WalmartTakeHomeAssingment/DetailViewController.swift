@@ -8,42 +8,41 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UITableViewController {
 
     var product:ProductModel?
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var priceLabel: UILabel!
     @IBOutlet var productImageView: UIImageView!
-    @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var shortDescriptionLabel: UILabel!
-    
+    @IBOutlet var descriptionLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.viewDidLoad()
+        self.tableView.estimatedRowHeight = 100
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.tableFooterView = UIView()
+        
         if let product = self.product {
             
+            self.titleLabel.text = product.product.productName
+            self.priceLabel.text = product.product.price
+            if product.product.inStock {
+                self.priceLabel.text = "\(self.priceLabel.text ?? "") In Stock"
+            }
             self.productImageView.image = product.image
-            if let shortHtmlData = NSString(string: product.product.shortDescription ?? "").data(using: String.Encoding.unicode.rawValue) {
-                do {
-                    let attributedString = try NSAttributedString(data: shortHtmlData, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-                    shortDescriptionLabel.attributedText = attributedString
-                } catch {
-                    
-                }
-            }
-            if let longHtmlData = NSString(string: "\n\n\(product.product.longDescription ?? "")").data(using: String.Encoding.unicode.rawValue) {
-                do {
-                    let attributedString = try NSAttributedString(data: longHtmlData, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-                   
-                    descriptionTextView.attributedText = attributedString
-                } catch {
-                    
-                }
-            }
-            
+            self.shortDescriptionLabel.attributedText = self.product?.shortDesciprion
+            self.descriptionLabel.attributedText = self.product?.longDesciprion
+
             
         }
         
     }
 
-
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 
 }
 
