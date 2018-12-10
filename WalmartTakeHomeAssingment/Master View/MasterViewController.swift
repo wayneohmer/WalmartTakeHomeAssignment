@@ -52,9 +52,10 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            if let indexPath = tableView.indexPathForSelectedRow {
+            if let row = tableView.indexPathForSelectedRow?.row {
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.product = products[indexPath.row]
+                controller.products = self.products
+                controller.index = row
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
