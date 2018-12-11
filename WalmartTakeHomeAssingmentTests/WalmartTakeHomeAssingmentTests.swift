@@ -10,6 +10,49 @@ import XCTest
 @testable import WalmartTakeHomeAssingment
 
 class WalmartTakeHomeAssingmentTests: XCTestCase {
+    
+    
+    func testNetworkErrorError() {
+        let networkManger = NetworkManager()
+        let error = NSError(domain: "", code: 0, userInfo: ["description":"Test error"])
+        do {
+            let _ = try networkManger.processResponse(data: nil, response: nil, error: error)
+        } catch let error as NetworkingError {
+            networkManger.handle(error: error)
+        } catch {
+            XCTFail("Missed NSError error")
+        }
+    }
+    func testNetworkErrorStatusCode() {
+        
+        let networkManger = NetworkManager()
+
+        let response = HTTPURLResponse(url: URL(string: "http://test.com")!, statusCode: 500, httpVersion: nil, headerFields: nil)
+        
+        do {
+            let _ = try networkManger.processResponse(data: nil, response: response, error: nil)
+        } catch let error as NetworkingError {
+            networkManger.handle(error: error)
+        } catch {
+            XCTFail("Missed statusCode error")
+        }
+    }
+    
+    func testNetworkErrorNoData() {
+        
+        let networkManger = NetworkManager()
+
+        let  response = HTTPURLResponse(url: URL(string: "http://test.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
+        
+        do {
+            let _ = try networkManger.processResponse(data: nil, response: response, error: nil)
+        } catch let error as NetworkingError {
+            networkManger.handle(error: error)
+        } catch {
+            XCTFail("Missed Data nil error")
+        }
+        
+    }
 
     func testJSONEncoder() {
         guard let filepath:String = Bundle.main.path(forResource: "TestData", ofType: "json") else {

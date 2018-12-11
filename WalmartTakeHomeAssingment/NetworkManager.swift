@@ -8,8 +8,8 @@
 
 import UIKit
 
-enum networkingError: Error {
-    case message
+enum NetworkingError: Error {
+    case message(error:Error)
     case noData
     case statusError(code:Int)
 }
@@ -30,8 +30,10 @@ class NetworkManager {
             do {
                 let jsonData = try self.processResponse(data: data, response: response, error: error)
                 closure(self.getProductsFrom(json: jsonData))
+            } catch let error as NetworkingError {
+                self.handle(error: error)
             } catch {
-                return
+                
             }
             
         }
@@ -42,20 +44,32 @@ class NetworkManager {
     func processResponse(data:Data?, response:URLResponse?, error:Error?) throws -> Data {
         
         if let error = error {
-            print (error)
-            throw networkingError.message
+            throw NetworkingError.message(error:error)
         }
         
         let httpResponse = response as? HTTPURLResponse
         
         if httpResponse?.statusCode == 500 {
-            throw networkingError.statusError(code:httpResponse?.statusCode ?? 0)
+            throw NetworkingError.statusError(code:httpResponse?.statusCode ?? 0)
         }
         
         guard let data = data else {
-            throw networkingError.noData
+            throw NetworkingError.noData
         }
         return data
+    }
+    
+    func handle(error:NetworkingError) {
+        
+        switch error {
+        case .message(let error):
+            print(error)
+        case .statusError(let code):
+            print(code)
+        case .noData:
+            print ("No Data")
+        }
+        
     }
     
     func getProductsFrom(json:Data) -> ProductsSumaryModel {
