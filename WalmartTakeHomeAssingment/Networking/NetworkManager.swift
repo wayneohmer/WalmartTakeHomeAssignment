@@ -9,7 +9,7 @@
 import UIKit
 
 enum NetworkingError: Error {
-    case message(error:Error)
+    case message(error:NSError)
     case noData
     case statusError(code:Int)
 }
@@ -17,11 +17,17 @@ enum NetworkingError: Error {
 class NetworkManager {
     
     let productUrlString = "https://mobile-tha-server.firebaseapp.com/walmartproducts/"
+    let pageSize = "15"
+    #if DEBUG
+    var errorLogger = ErrorLogManager(errorLogger: ConsoleLogger())
+    #else
+    var errorLogger = ErrorLogManager(errorLogger: RemoteServiceLogger())
+    #endif
     
     func fetchProducts(page: Int, closure:@escaping (ProductsSumaryModel) -> Void) {
         let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
 
-        guard let productUrl = URL(string: "\(self.productUrlString)\(page)/15") else {
+        guard let productUrl = URL(string: "\(self.productUrlString)\(page)/\(pageSize)") else {
             return
         }
         
@@ -43,13 +49,13 @@ class NetworkManager {
     //break this out so it can be tested.
     func processResponse(data:Data?, response:URLResponse?, error:Error?) throws -> Data {
         
-        if let error = error {
+        if let error = error as NSError? {
             throw NetworkingError.message(error:error)
         }
         
         let httpResponse = response as? HTTPURLResponse
         
-        if httpResponse?.statusCode == 500 {
+        if httpResponse?.statusCode != 200 {
             throw NetworkingError.statusError(code:httpResponse?.statusCode ?? 0)
         }
         
@@ -63,11 +69,15 @@ class NetworkManager {
         
         switch error {
         case .message(let error):
-            print(error)
+            if let description = error.userInfo["description"] as? String {
+                self.errorLogger.log(errorMessage: description)
+            } else {
+                self.errorLogger.log(errorMessage: error.localizedDescription)
+            }
         case .statusError(let code):
-            print(code)
+            self.errorLogger.log(errorMessage: "Status Code: \(code)")
         case .noData:
-            print ("No Data")
+            self.errorLogger.log(errorMessage: "No Data")
         }
         
     }
