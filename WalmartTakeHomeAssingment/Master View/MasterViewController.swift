@@ -25,7 +25,7 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
 
         self.tableView.prefetchDataSource = self
        
-        networkManager.fetchProducts(page:self.lastPageRequested, closure:self.handle)
+        networkManager.fetchProducts(page:self.lastPageRequested, successClosure:self.handle, failClosure:self.networkFailure )
         
         if let split = splitViewController {
             let controllers = split.viewControllers
@@ -45,6 +45,14 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
             self.products.append(contentsOf: productSummary.products)
             self.tableView.reloadData()
         }
+    }
+    
+    func networkFailure(message:String?) {
+        
+        let alertMessage = message ?? "Network failure."
+        let alert = UIAlertController(title: "Cannot Get Products", message: alertMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 
@@ -99,7 +107,7 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
         for indexPath in indexPaths {
             if indexPath.row >= self.products.count-1 && self.products.count < self.totalProducts {
                 self.lastPageRequested += 1
-                networkManager.fetchProducts(page:self.lastPageRequested, closure:self.handle)
+                networkManager.fetchProducts(page:self.lastPageRequested, successClosure :self.handle, failClosure: self.networkFailure)
                 break
             }
         }

@@ -24,7 +24,7 @@ class NetworkManager {
     var errorLogger = ErrorLogManager(errorLogger: RemoteServiceLogger())
     #endif
     
-    func fetchProducts(page: Int, closure:@escaping (ProductsSumaryModel) -> Void) {
+    func fetchProducts(page: Int, successClosure:@escaping (ProductsSumaryModel) -> Void, failClosure:@escaping (String?) -> Void) {
         let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
 
         guard let productUrl = URL(string: "\(self.productUrlString)\(page)/\(pageSize)") else {
@@ -35,13 +35,12 @@ class NetworkManager {
             
             do {
                 let jsonData = try self.processResponse(data: data, response: response, error: error)
-                closure(self.getProductsFrom(json: jsonData))
+                successClosure(self.getProductsFrom(json: jsonData))
             } catch let error as NetworkingError {
-                self.handle(error: error)
+                failClosure(self.handle(error: error))
             } catch {
-                
+                failClosure(nil)
             }
-            
         }
         dataTask.resume()
     }
@@ -65,7 +64,8 @@ class NetworkManager {
         return data
     }
     
-    func handle(error:NetworkingError) {
+    @discardableResult
+    func handle(error:NetworkingError) -> String? {
         
         switch error {
         case .message(let error):
@@ -73,13 +73,14 @@ class NetworkManager {
                 self.errorLogger.log(errorMessage: description)
             } else {
                 self.errorLogger.log(errorMessage: error.localizedDescription)
+                return error.localizedDescription
             }
         case .statusError(let code):
             self.errorLogger.log(errorMessage: "Status Code: \(code)")
         case .noData:
             self.errorLogger.log(errorMessage: "No Data")
         }
-        
+        return nil
     }
     
     func getProductsFrom(json:Data) -> ProductsSumaryModel {
