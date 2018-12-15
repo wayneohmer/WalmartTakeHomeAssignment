@@ -19,6 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
+        
+        do {
+            try FileManager.default.createDirectory(atPath: ProductModel.imageDirectory, withIntermediateDirectories: true, attributes: nil)
+        } catch let error as NSError {
+            print("\(error.description)")
+        }
+        
         return true
     }
 

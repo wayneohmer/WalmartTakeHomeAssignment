@@ -24,13 +24,22 @@ class ProductsSumaryModel {
 
 class ProductModel {
     
+    static var imageDirectory = "\(NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0])/WalmartImages"
+    
     var product: ProductStruct
+    
+    private var cachedImageUrl: URL {
+        return URL(fileURLWithPath:"\(ProductModel.imageDirectory)/\(self.product.productId)")
+    }
     
     var imageUrl: URL? {
         return URL(string: "https://mobile-tha-server.firebaseapp.com/\(self.product.productImage)")
     }
     
-    var image:UIImage?
+    //private because consumer should only use requestImage()
+    private var image:UIImage? {
+        return UIImage(contentsOfFile: cachedImageUrl.relativePath)
+    }
     
     var shortDesciprion:NSAttributedString? {
         return sizefontsFrom(string: self.convertHtmlFrom(string: self.product.shortDescription))
@@ -97,18 +106,27 @@ class ProductModel {
             self.fetchFailed = true
             return
         }
+        //if we have an image, don't fetch.  
+        if let _ = self.image {
+            return
+        }
         self.fetchFailed = false
         let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
         let dataTask = defaultSession.dataTask(with: url) { data, response, error in
             //No error identification or retries. A production app would be more robust.
-            if let imageData = data, let image = UIImage(data: imageData) {
-                self.image = image
-                for closure in self.requestImageClosures {
-                    closure(image, url.absoluteString)
-                }
-            } else {
+            guard let imageData = data, let image = UIImage(data: imageData) else {
                 self.fetchFailed = true
                 self.requestImageClosures.removeAll()
+                return
+            }
+            do {
+                try imageData.write(to: self.cachedImageUrl)
+            } catch {
+                self.fetchFailed = true
+                self.requestImageClosures.removeAll()
+            }
+            for closure in self.requestImageClosures {
+                closure(image, url.absoluteString)
             }
         }
         dataTask.resume()

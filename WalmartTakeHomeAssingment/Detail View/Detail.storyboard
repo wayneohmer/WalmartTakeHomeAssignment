@@ -20,24 +20,30 @@
                         <sections>
                             <tableViewSection id="kYa-1B-WuE">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="101" id="NuW-Rn-raA">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="123" id="NuW-Rn-raA">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NuW-Rn-raA" id="KLR-yL-iON">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pk9-ES-DcS">
-                                                    <rect key="frame" x="16" y="16" width="343" height="77"/>
+                                                    <rect key="frame" x="16" y="16" width="343" height="99"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJV-u4-sl1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="48.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJV-u4-sl1">
+                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="42"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-ce-V6r">
-                                                            <rect key="frame" x="0.0" y="56.5" width="343" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Price" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0C-ce-V6r">
+                                                            <rect key="frame" x="0.0" y="50" width="343" height="20.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="999" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAi-mU-G3C">
+                                                            <rect key="frame" x="0.0" y="78.5" width="343" height="20.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -55,7 +61,7 @@
                                         <gestureRecognizers/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="238" id="1yi-ht-tpM">
-                                        <rect key="frame" x="0.0" y="101" width="375" height="238"/>
+                                        <rect key="frame" x="0.0" y="123" width="375" height="238"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1yi-ht-tpM" id="Du4-MV-toy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="238"/>
@@ -78,7 +84,7 @@
                                         <gestureRecognizers/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="87" id="kjW-gu-UFL">
-                                        <rect key="frame" x="0.0" y="339" width="375" height="87"/>
+                                        <rect key="frame" x="0.0" y="361" width="375" height="87"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kjW-gu-UFL" id="kir-hK-b21">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
@@ -90,9 +96,10 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCm-C9-pHz">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="42.5"/>
                                                             <attributedString key="attributedText">
-                                                                <fragment content="Label">
+                                                                <fragment content="Short Description">
                                                                     <attributes>
                                                                         <font key="NSFont" metaFont="system" size="17"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                     </attributes>
                                                                 </fragment>
                                                             </attributedString>
@@ -101,9 +108,10 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sk1-4n-bDe">
                                                             <rect key="frame" x="0.0" y="50.5" width="343" height="20.5"/>
                                                             <attributedString key="attributedText">
-                                                                <fragment content="Label">
+                                                                <fragment content="Long Description">
                                                                     <attributes>
                                                                         <font key="NSFont" metaFont="system" size="17"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                     </attributes>
                                                                 </fragment>
                                                             </attributedString>
@@ -129,11 +137,27 @@
                             <outlet property="delegate" destination="mkF-Ff-8c8" id="bUN-Pz-3Ec"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="mKY-Lg-sJ3"/>
+                    <navigationItem key="navigationItem" id="mKY-Lg-sJ3">
+                        <rightBarButtonItems>
+                            <barButtonItem title="\/" id="TDH-wV-nC5">
+                                <connections>
+                                    <action selector="nextTouched:" destination="mkF-Ff-8c8" id="k9g-5e-ZBm"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title=" /\ " id="l01-Q6-mPg">
+                                <connections>
+                                    <action selector="previousTouched:" destination="mkF-Ff-8c8" id="eUL-Nf-nTH"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="TDH-wV-nC5" id="mgY-93-hea"/>
                         <outlet property="descriptionLabel" destination="sk1-4n-bDe" id="Ivm-99-BAn"/>
+                        <outlet property="forwardButton" destination="l01-Q6-mPg" id="gTh-Om-ecE"/>
                         <outlet property="priceLabel" destination="M0C-ce-V6r" id="OhD-7e-L8a"/>
                         <outlet property="productImageView" destination="0bb-Cn-jgQ" id="hQh-6p-p9A"/>
+                        <outlet property="ratingLabel" destination="oAi-mU-G3C" id="Ihf-Kc-mBh"/>
                         <outlet property="shortDescriptionLabel" destination="qCm-C9-pHz" id="ipR-HG-uIT"/>
                         <outlet property="titleLabel" destination="xJV-u4-sl1" id="I73-Fp-2CB"/>
                     </connections>
