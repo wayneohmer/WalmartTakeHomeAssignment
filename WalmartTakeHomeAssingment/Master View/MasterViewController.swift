@@ -64,6 +64,7 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.products = self.products
                 controller.index = row
+                controller.masterVc = self
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }

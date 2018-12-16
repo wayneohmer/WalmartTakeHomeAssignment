@@ -12,6 +12,7 @@ class DetailViewController: UITableViewController {
 
     var products = [ProductModel]()
     var index = 0
+    var masterVc: MasterViewController!
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
@@ -44,6 +45,7 @@ class DetailViewController: UITableViewController {
     
     func updateUI() {
         if index < self.products.count {
+            self.masterVc.tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .none)
             self.forwardButton.isEnabled = index != 0
             self.backButton.isEnabled = index < self.products.count - 1
             let product = self.products[index]
@@ -68,7 +70,7 @@ class DetailViewController: UITableViewController {
             }
             self.shortDescriptionLabel.attributedText = product.shortDesciprion
             self.descriptionLabel.attributedText = product.longDesciprion
-            //ensuers autolayout recalculates.
+            //ensures autolayout recalculates.
             self.tableView.reloadData()
 
         } else {
