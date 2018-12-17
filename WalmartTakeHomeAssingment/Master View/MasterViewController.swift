@@ -10,12 +10,12 @@ import UIKit
 
 class MasterViewController: UITableViewController, UITableViewDataSourcePrefetching {
     
-    var detailViewController: DetailViewController? = nil
+    var detailViewController: DetailViewController?
     var products = [ProductModel]()
     var totalProducts = 0
     var lastPageFetched = 1
     var lastPageRequested = 1
-    let networkManager = NetworkManager()
+    let fetchManager = FetchManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,18 +24,26 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
         self.tableView.tableFooterView = UIView()
 
         self.tableView.prefetchDataSource = self
-       
-        networkManager.fetchProducts(page:self.lastPageRequested, successClosure:self.handle, failClosure:self.networkFailure )
         
-        if let split = splitViewController {
-            let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(self.fetchData), for: .valueChanged)
+        
+        self.fetchData()
+
+        if let svc = splitViewController {
+            let controllers = svc.viewControllers
+            self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+    }
+    
+    @objc
+    func fetchData() {
+        fetchManager.fetchProducts(page:self.lastPageRequested, successClosure:self.handle, failClosure:self.networkFailure )
     }
 
     func handle(productSummary:ProductsSumaryModel) {
@@ -44,15 +52,32 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
             self.totalProducts = productSummary.productsSumaryStruct?.totalProducts ?? self.totalProducts
             self.products.append(contentsOf: productSummary.products)
             self.tableView.reloadData()
+            //This is for the situation when the detail vc shows at launch. iPad portrait or large phone landscape.
+            //populate view as soon as data is fetched.
+            if let detailVc = self.detailViewController {
+                if detailVc.products.count == 0 {
+                    detailVc.masterVc = self
+                    detailVc.index = 0
+                    detailVc.products = self.products
+                    if detailVc.isViewLoaded {
+                        detailVc.updateUI()
+                    }
+                }
+            }
+            //Just in case this was triggered by pull down refresh.
+            self.refreshControl?.endRefreshing()
         }
     }
     
+    //Very rudimenatry failure messages. Will show custom message if sent.
     func networkFailure(message:String?) {
         
         let alertMessage = message ?? "Network failure."
         let alert = UIAlertController(title: "Cannot Get Products", message: alertMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        self.refreshControl?.endRefreshing()
+
     }
     
 
@@ -62,9 +87,9 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
         if segue.identifier == "showDetail" {
             if let row = tableView.indexPathForSelectedRow?.row {
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.products = self.products
                 controller.index = row
                 controller.masterVc = self
+                controller.products = self.products
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -86,7 +111,8 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
             return UITableViewCell()
         }
         let product = self.products[indexPath.row]
-        cell.nameLabel.text = product.product.productName
+        cell.nameLabel.text = product.productName
+       
         cell.priceLabel.text = product.product.price
         //Store the url for later verification.
         cell.imageUrlString = product.imageUrl?.absoluteString ?? ""
@@ -103,12 +129,13 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
         return cell
     }
 
+    //lazy loading using prefetch. If we are seeing a cell five rows from the bottom, get the next page.  
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         
         for indexPath in indexPaths {
-            if indexPath.row >= self.products.count-1 && self.products.count < self.totalProducts {
+            if indexPath.row >= self.products.count-5 && self.products.count < self.totalProducts {
                 self.lastPageRequested += 1
-                networkManager.fetchProducts(page:self.lastPageRequested, successClosure :self.handle, failClosure: self.networkFailure)
+                self.fetchData()
                 break
             }
         }

@@ -41,6 +41,7 @@ class RemoteServiceLogger: ErrorLogger {
 class ConsoleLogger: ErrorLogger {
     
     func log(errorMessage: String) {
+        //This will only get used in DEBG mode
         print(errorMessage)
     }
     
@@ -48,6 +49,7 @@ class ConsoleLogger: ErrorLogger {
 
 class UnitTestLogger: ErrorLogger {
     
+    //Save message so it can be checked in unit test.
     var lastMessage = ""
     
     func log(errorMessage: String) {

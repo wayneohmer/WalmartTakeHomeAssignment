@@ -141,20 +141,20 @@
                         <rightBarButtonItems>
                             <barButtonItem title="\/" id="TDH-wV-nC5">
                                 <connections>
-                                    <action selector="nextTouched:" destination="mkF-Ff-8c8" id="k9g-5e-ZBm"/>
+                                    <action selector="forwardTouched:" destination="mkF-Ff-8c8" id="9rv-XR-CpH"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title=" /\ " id="l01-Q6-mPg">
                                 <connections>
-                                    <action selector="previousTouched:" destination="mkF-Ff-8c8" id="eUL-Nf-nTH"/>
+                                    <action selector="backTouched:" destination="mkF-Ff-8c8" id="Q0Q-Y0-8PU"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="TDH-wV-nC5" id="mgY-93-hea"/>
+                        <outlet property="backButton" destination="l01-Q6-mPg" id="5vS-ib-Dq6"/>
                         <outlet property="descriptionLabel" destination="sk1-4n-bDe" id="Ivm-99-BAn"/>
-                        <outlet property="forwardButton" destination="l01-Q6-mPg" id="gTh-Om-ecE"/>
+                        <outlet property="forwardButton" destination="TDH-wV-nC5" id="LtV-4g-UJJ"/>
                         <outlet property="priceLabel" destination="M0C-ce-V6r" id="OhD-7e-L8a"/>
                         <outlet property="productImageView" destination="0bb-Cn-jgQ" id="hQh-6p-p9A"/>
                         <outlet property="ratingLabel" destination="oAi-mU-G3C" id="Ihf-Kc-mBh"/>

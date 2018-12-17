@@ -8,6 +8,7 @@
 
 import UIKit
 
+//regular class to mirror decodeable structs.
 class ProductsSumaryModel {
     
     var productsSumaryStruct: ProductsSumaryStruct?
@@ -24,19 +25,30 @@ class ProductsSumaryModel {
 
 class ProductModel {
     
+    //directly to cache images.
     static var imageDirectory = "\(NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0])/WalmartImages"
     
     var product: ProductStruct
     
+    //replace non printable characters with a space. Quick and dirty way to get rid of the not UTF8 characters.
+    var productName: String {
+       return self.product.productName.components(separatedBy: .symbols).joined(separator: " ")
+    }
+    
+    //file path for local cached image. Assumes productId is unique.
     private var cachedImageUrl: URL {
         return URL(fileURLWithPath:"\(ProductModel.imageDirectory)/\(self.product.productId)")
     }
     
+    //server url for image.
     var imageUrl: URL? {
         return URL(string: "https://mobile-tha-server.firebaseapp.com/\(self.product.productImage)")
     }
     
     //private because consumer should only use requestImage()
+    //Image is only stored in cache directory, never in RAM
+    //This does not cause a noticable performace hit and allows to OS to handle
+    //cache manageemnt.
     private var image:UIImage? {
         return UIImage(contentsOfFile: cachedImageUrl.relativePath)
     }
@@ -51,14 +63,18 @@ class ProductModel {
     //Don't save requests if fetch has failed.
     var fetchFailed = false
     
-    //when a request comes in while the is being fetched, store them until the fetch is done.
+    //when a request comes in while the imgage is being fetched, store them until the fetch is done.
     var requestImageClosures = [((UIImage, String) -> Void)]()
     
+    //initialize with a decoded product struct
     required init(product: ProductStruct) {
         self.product = product
         self.fetchImage()
     }
     
+    //This is a simplistic way to allow for dynamic fonts with HTML.
+    //It assumes non bold text is "body" and bold is title2
+    //This could be made much smarter.
     func sizefontsFrom(string:NSMutableAttributedString?) -> NSAttributedString? {
        
         guard let string = string else {
@@ -79,10 +95,10 @@ class ProductModel {
         return string
     }
     
-    func convertHtmlFrom(string:String?) -> NSMutableAttributedString? {
-        if let shortHtmlData = NSString(string: string ?? "").data(using: String.Encoding.unicode.rawValue) {
+    func convertHtmlFrom(string: String?) -> NSMutableAttributedString? {
+        if let htmlData = NSString(string: string ?? "").data(using: String.Encoding.unicode.rawValue) {
             do {
-                let attributedString = try NSMutableAttributedString(data: shortHtmlData, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+                let attributedString = try NSMutableAttributedString(data: htmlData, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
                 return attributedString
             } catch {
             }
@@ -90,6 +106,8 @@ class ProductModel {
         return nil
     }
     
+    //This returns the image from the cache directory if it exists. If not, It fetches it
+    //from the server.  
     func requestImage(closure:@escaping (UIImage, String) -> Void) {
         if let image = self.image, let url = self.imageUrl {
             closure(image, url.absoluteString)

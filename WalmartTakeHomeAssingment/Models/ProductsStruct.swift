@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Decodable to parse json.  
 struct ProductsSumaryStruct: Decodable {
 
     var products: [ProductStruct]

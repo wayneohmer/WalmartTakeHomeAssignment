@@ -11,7 +11,7 @@ import XCTest
 
 class WalmartTakeHomeAssingmentTests: XCTestCase {
 
-    let networkManger = NetworkManager()
+    let networkManger = FetchManager()
     let unitTestLogger = UnitTestLogger()
     let fakeUrl = URL(string: "http://test.com")!
     
@@ -47,7 +47,7 @@ class WalmartTakeHomeAssingmentTests: XCTestCase {
         do {
             let _ = try self.networkManger.processResponse(data: self.testData, response: response, error: error)
             XCTFail("Succeeded with non nil NSError")
-        } catch let error as NetworkingError {
+        } catch let error as FetchError {
             self.networkManger.handle(error: error)
             XCTAssert(self.unitTestLogger.lastMessage == "Test Error")
         } catch {
@@ -69,7 +69,7 @@ class WalmartTakeHomeAssingmentTests: XCTestCase {
             do {
                 let _ = try self.networkManger.processResponse(data: self.testData, response: response, error: nil)
                 XCTFail("Status code:\(code) did not thow error")
-            } catch let error as NetworkingError {
+            } catch let error as FetchError {
                 self.networkManger.handle(error: error)
                 XCTAssert(self.unitTestLogger.lastMessage == "Status Code: \(code)", self.unitTestLogger.lastMessage)
             } catch {
@@ -84,51 +84,60 @@ class WalmartTakeHomeAssingmentTests: XCTestCase {
         
         do {
             let _ = try networkManger.processResponse(data: nil, response: response, error: nil)
-        } catch let error as NetworkingError {
+        } catch let error as FetchError {
             self.networkManger.handle(error: error)
         } catch {
             XCTFail("Missed Data nil error")
         }
         
     }
-
-    func testFetchDecode() {
-        
-        let  response = HTTPURLResponse(url: self.fakeUrl, statusCode: 200, httpVersion: nil, headerFields: nil)
+    
+    func testfetchData (){
+        let response = HTTPURLResponse(url: self.fakeUrl, statusCode: 200, httpVersion: nil, headerFields: nil)
         
         do {
-            let responseData = try networkManger.processResponse(data: self.testData, response: response, error: nil)
-            do {
-                let productFeed = try JSONDecoder().decode(ProductsSumaryStruct.self, from: responseData)
-                XCTAssert(productFeed.products.count == 2, "Wrong product count")
-                XCTAssert(productFeed.totalProducts == 224, "Wrong totalProducts")
-                XCTAssert(productFeed.pageNumber == 1, "Wrong pageNumber")
-                XCTAssert(productFeed.pageSize == 2, "Wrong pageSize")
-                XCTAssert(productFeed.statusCode == 200, "Wrong statusCode")
-
-                let products = productFeed.products
-                for (idx,product) in products.enumerated() {
-                    switch idx {
-                    case 0:
-                        XCTAssert(product.productId == "003e3e6a-3f84-43ac-8ef3-a5ae2db0f80e", "Wrong productId")
-                        XCTAssert(product.inStock == true, "Wrong inStock")
-                        XCTAssert(product.reviewRating == 2, "Wrong reviewRating")
-                        XCTAssert(product.reviewCount == 1, "Wrong reviewCount")
-                    case 1:
-                        XCTAssert(product.productId == "0150f9b5-8918-4fd1-92b3-fc032cc6c684", "Wrong productId")
-                        XCTAssert(product.inStock == true, "Wrong inStock")
-                        XCTAssert(product.reviewRating == 4.5, "Wrong reviewRating")
-                        XCTAssert(product.reviewCount == 2, "Wrong reviewCount")
-                    default:
-                        break
-                    }
-                }
-                
-            } catch  {
-                XCTFail("Could not decode JSON - \(error)")
-            }
+            let productSummary = try networkManger.processResponse(data: self.testData, response: response, error: nil)
+            XCTAssert(productSummary.products.count == 2, "Wrong product count")
+            //There could be a lot more detail checking here.
+            
+        } catch let error as FetchError {
+            XCTFail("Good Data threw Error \(error.localizedDescription)")
         } catch {
-            XCTFail("Good data threw error")
+            XCTFail("Good Data threw Error")
+        }
+    }
+        
+    func testModelDecode() {
+        
+        do {
+            let productFeed = try JSONDecoder().decode(ProductsSumaryStruct.self, from: self.testData)
+            
+            XCTAssert(productFeed.products.count == 2, "Wrong product count")
+            XCTAssert(productFeed.totalProducts == 224, "Wrong totalProducts")
+            XCTAssert(productFeed.pageNumber == 1, "Wrong pageNumber")
+            XCTAssert(productFeed.pageSize == 2, "Wrong pageSize")
+            XCTAssert(productFeed.statusCode == 200, "Wrong statusCode")
+            
+            let products = productFeed.products
+            for (idx,product) in products.enumerated() {
+                switch idx {
+                case 0:
+                    XCTAssert(product.productId == "003e3e6a-3f84-43ac-8ef3-a5ae2db0f80e", "Wrong productId")
+                    XCTAssert(product.inStock == true, "Wrong inStock")
+                    XCTAssert(product.reviewRating == 2, "Wrong reviewRating")
+                    XCTAssert(product.reviewCount == 1, "Wrong reviewCount")
+                case 1:
+                    XCTAssert(product.productId == "0150f9b5-8918-4fd1-92b3-fc032cc6c684", "Wrong productId")
+                    XCTAssert(product.inStock == true, "Wrong inStock")
+                    XCTAssert(product.reviewRating == 4.5, "Wrong reviewRating")
+                    XCTAssert(product.reviewCount == 2, "Wrong reviewCount")
+                default:
+                    break
+                }
+            }
+            
+        } catch  {
+            XCTFail("Could not decode JSON - \(error)")
         }
     }
 }

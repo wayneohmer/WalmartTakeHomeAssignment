@@ -10,9 +10,10 @@ import UIKit
 
 class DetailViewController: UITableViewController {
 
-    var products = [ProductModel]()
-    var index = 0
     var masterVc: MasterViewController!
+    var index = 0
+
+    var products = [ProductModel]()
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
@@ -20,24 +21,13 @@ class DetailViewController: UITableViewController {
     @IBOutlet var ratingLabel: UILabel!
     @IBOutlet var shortDescriptionLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
-    @IBOutlet weak var forwardButton: UIBarButtonItem!
-    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet var forwardButton: UIBarButtonItem!
+    @IBOutlet var backButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = 100
-        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.tableFooterView = UIView()
-        
-        if (self.splitViewController?.isCollapsed ?? false) {
-            let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
-            rightSwipe.direction = .right
-            let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
-            leftSwipe.direction = .left
-            self.view.addGestureRecognizer(rightSwipe)
-            self.view.addGestureRecognizer(leftSwipe)
-            self.navigationItem.rightBarButtonItems = nil
-        }
         
         self.updateUI()
         
@@ -45,24 +35,30 @@ class DetailViewController: UITableViewController {
     
     func updateUI() {
         if index < self.products.count {
+            //update selected index for maseter view to keep it in sync.
             self.masterVc.tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .none)
-            self.forwardButton.isEnabled = index != 0
-            self.backButton.isEnabled = index < self.products.count - 1
+            self.masterVc.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .none, animated: true)
+            //Disable buttons that can't be used.
+            self.backButton.isEnabled = index != 0
+            self.forwardButton.isEnabled = index < self.products.count - 1
+            //update labels and images.
             let product = self.products[index]
-            self.titleLabel.text = product.product.productName
+            self.titleLabel.text = product.productName
             self.priceLabel.text = product.product.price
             if product.product.inStock {
                 self.priceLabel.text = "\(self.priceLabel.text ?? "") In Stock"
             } else {
                 self.priceLabel.text = "\(self.priceLabel.text ?? "") Backorder"
             }
+            //This is ugly. A production app would implement star images.
             if product.product.reviewRating > 0 && product.product.reviewCount > 0 {
                 self.ratingLabel.isHidden = false
                 self.ratingLabel.text = String(format: "Rating: %1.1f/5 - %d",product.product.reviewRating, product.product.reviewCount)
             } else {
                 self.ratingLabel.isHidden = true
             }
-            //just in case the image fell out of cache
+            
+            //Just in case the image fell out of cache
             product.requestImage() { image, url in
                 DispatchQueue.main.async {
                     self.productImageView.image = image
@@ -70,10 +66,12 @@ class DetailViewController: UITableViewController {
             }
             self.shortDescriptionLabel.attributedText = product.shortDesciprion
             self.descriptionLabel.attributedText = product.longDesciprion
-            //ensures autolayout recalculates.
+            
+            //Ensures autolayout recalculates.
             self.tableView.reloadData()
 
         } else {
+            //make sure everthing is blank if we don't have a product to look at.
             self.titleLabel.text = ""
             self.priceLabel.text = ""
             self.ratingLabel.text = ""
@@ -84,50 +82,22 @@ class DetailViewController: UITableViewController {
             
     }
     
-    @IBAction func previousTouched(_ sender: UIBarButtonItem) {
-       self.back()
-    }
-    
-    @IBAction func nextTouched(_ sender: UIBarButtonItem) {
-        self.forward()
-    }
-    
-    func forward() {
-        if self.index < products.count - 1 {
-            self.index += 1
-        }
-        self.updateUI()
-    }
-    
-    func back() {
+    @IBAction func backTouched(_ sender: UIBarButtonItem) {
+        
         if self.index > 0 {
             self.index -= 1
         }
         self.updateUI()
     }
     
-    
-    @objc
-    func swipe(_ sender: UISwipeGestureRecognizer) {
-        
-        if self.splitViewController?.isCollapsed ?? false {
-            switch sender.direction {
-            case .right:
-                if self.index > 0 {
-                    self.index -= 1
-                }
-            case .left:
-                if self.index < products.count - 1 {
-                    self.index += 1
-                }
-            default:
-                break
-            }
-            self.updateUI()
+    @IBAction func forwardTouched(_ sender: UIBarButtonItem) {
+        if self.index < products.count - 1 {
+            self.index += 1
         }
-       
+        self.updateUI()
     }
     
+    //AutoLayout needs this to be a functions. Setting it in ViewDidLoad doesn't work. 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }

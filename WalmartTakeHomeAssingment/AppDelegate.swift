@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
         
+        //Create image cache directory.
         do {
             try FileManager.default.createDirectory(atPath: ProductModel.imageDirectory, withIntermediateDirectories: true, attributes: nil)
         } catch let error as NSError {
