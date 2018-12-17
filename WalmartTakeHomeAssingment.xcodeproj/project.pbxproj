@@ -13,7 +13,7 @@
 		2B39BF0A21BC546E00C01CB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B39BF0821BC546E00C01CB7 /* Main.storyboard */; };
 		2B39BF0C21BC546F00C01CB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B39BF0B21BC546F00C01CB7 /* Assets.xcassets */; };
 		2B39BF0F21BC546F00C01CB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B39BF0D21BC546F00C01CB7 /* LaunchScreen.storyboard */; };
-		2B39BF1A21BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.swift */; };
+		2B39BF1A21BC546F00C01CB7 /* WalmartTakeHomeAssingnmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssingnmentTests.swift */; };
 		2B39BF2521BC54E700C01CB7 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B39BF2421BC54E700C01CB7 /* TestData.json */; };
 		2B39BF2721BC55FC00C01CB7 /* ProductsStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B39BF2621BC55FC00C01CB7 /* ProductsStruct.swift */; };
 		2B39BF2821BC593E00C01CB7 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B39BF2421BC54E700C01CB7 /* TestData.json */; };
@@ -44,7 +44,7 @@
 		2B39BF0E21BC546F00C01CB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B39BF1021BC546F00C01CB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B39BF1521BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalmartTakeHomeAssingmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalmartTakeHomeAssingmentTests.swift; sourceTree = "<group>"; };
+		2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssingnmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalmartTakeHomeAssingnmentTests.swift; sourceTree = "<group>"; };
 		2B39BF1B21BC546F00C01CB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B39BF2421BC54E700C01CB7 /* TestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestData.json; sourceTree = "<group>"; };
 		2B39BF2621BC55FC00C01CB7 /* ProductsStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsStruct.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		2B39BF1821BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests */ = {
 			isa = PBXGroup;
 			children = (
-				2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.swift */,
+				2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssingnmentTests.swift */,
 				2B39BF1B21BC546F00C01CB7 /* Info.plist */,
 				2B39BF2421BC54E700C01CB7 /* TestData.json */,
 			);
@@ -272,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B39BF1A21BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.swift in Sources */,
+				2B39BF1A21BC546F00C01CB7 /* WalmartTakeHomeAssingnmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

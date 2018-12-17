@@ -8,6 +8,8 @@
 
 import UIKit
 
+// maybe explain why you used a tableview for this?
+
 class DetailViewController: UITableViewController {
 
     var masterVc: MasterViewController!
@@ -35,7 +37,7 @@ class DetailViewController: UITableViewController {
     
     func updateUI() {
         if index < self.products.count {
-            //update selected index for maseter view to keep it in sync.
+            //update selected index for master view to keep it in sync.
             self.masterVc.tableView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .none)
             self.masterVc.tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .none, animated: true)
             //Disable buttons that can't be used.
@@ -48,9 +50,9 @@ class DetailViewController: UITableViewController {
             if product.product.inStock {
                 self.priceLabel.text = "\(self.priceLabel.text ?? "") In Stock"
             } else {
-                self.priceLabel.text = "\(self.priceLabel.text ?? "") Backorder"
+                self.priceLabel.text = "\(self.priceLabel.text ?? "") Backordered"
             }
-            //This is ugly. A production app would implement star images.
+            //Display the rating. This is ugly. A production app would implement the star images.
             if product.product.reviewRating > 0 && product.product.reviewCount > 0 {
                 self.ratingLabel.isHidden = false
                 self.ratingLabel.text = String(format: "Rating: %1.1f/5 - %d",product.product.reviewRating, product.product.reviewCount)
@@ -58,20 +60,20 @@ class DetailViewController: UITableViewController {
                 self.ratingLabel.isHidden = true
             }
             
-            //Just in case the image fell out of cache
+            //Get image (will fetch if necessary)
             product.requestImage() { image, url in
                 DispatchQueue.main.async {
                     self.productImageView.image = image
                 }
             }
-            self.shortDescriptionLabel.attributedText = product.shortDesciprion
-            self.descriptionLabel.attributedText = product.longDesciprion
+            self.shortDescriptionLabel.attributedText = product.shortDescription
+            self.descriptionLabel.attributedText = product.longDescription
             
-            //Ensures autolayout recalculates.
+            //Ensure autolayout recalculates.
             self.tableView.reloadData()
 
         } else {
-            //make sure everthing is blank if we don't have a product to look at.
+            //make sure everything is blank if we don't have a product to look at.
             self.titleLabel.text = ""
             self.priceLabel.text = ""
             self.ratingLabel.text = ""
@@ -97,7 +99,7 @@ class DetailViewController: UITableViewController {
         self.updateUI()
     }
     
-    //AutoLayout needs this to be a functions. Setting it in ViewDidLoad doesn't work. 
+    //AutoLayout needs this to be a function. Setting it in ViewDidLoad doesn't work.
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }

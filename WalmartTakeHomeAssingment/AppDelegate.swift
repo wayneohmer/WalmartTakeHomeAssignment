@@ -14,16 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Set up split view controller.
         let splitViewController = window!.rootViewController as! UISplitViewController
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
         
-        //Create image cache directory.
+        // Create image cache directory.
         do {
             try FileManager.default.createDirectory(atPath: ProductModel.imageDirectory, withIntermediateDirectories: true, attributes: nil)
-        } catch let error as NSError {
+        } catch let error as NSError { // can probably be just } catch {
             print("\(error.description)")
         }
         
@@ -52,8 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    // MARK: - Split view
-
+    // MARK: - Split view delegate
+    
+    // could use more comments here - I haevn't used a split view contoller recently and I'm not
+    // sure what's happening here
+    
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController:UIViewController, onto primaryViewController:UIViewController) -> Bool {
         guard let secondaryAsNavController = secondaryViewController as? UINavigationController else { return false }
         guard let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController else { return false }

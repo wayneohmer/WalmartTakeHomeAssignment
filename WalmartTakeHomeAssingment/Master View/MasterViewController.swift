@@ -20,6 +20,7 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.estimatedRowHeight = 100
+        // this works here but not in the detail table?
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.tableFooterView = UIView()
 
@@ -37,6 +38,7 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        // could use a comment here
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
@@ -46,13 +48,13 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
         fetchManager.fetchProducts(page:self.lastPageRequested, successClosure:self.handle, failClosure:self.networkFailure )
     }
 
-    func handle(productSummary:ProductsSumaryModel) {
+    func handle(productSummary:ProductsSummaryModel) {
         DispatchQueue.main.async {
-            self.lastPageFetched = productSummary.productsSumaryStruct?.pageNumber ?? 0
-            self.totalProducts = productSummary.productsSumaryStruct?.totalProducts ?? self.totalProducts
+            self.lastPageFetched = productSummary.productsSummaryStruct?.pageNumber ?? 0
+            self.totalProducts = productSummary.productsSummaryStruct?.totalProducts ?? self.totalProducts
             self.products.append(contentsOf: productSummary.products)
             self.tableView.reloadData()
-            //This is for the situation when the detail vc shows at launch. iPad portrait or large phone landscape.
+            //This is for the situation when the detail vc shows at launch. iPad portrait or large phone landscape. (you could express those in size classes just to show you know about them)
             //populate view as soon as data is fetched.
             if let detailVc = self.detailViewController {
                 if detailVc.products.count == 0 {

@@ -12,6 +12,8 @@ protocol ErrorLogger {
     func log(errorMessage: String)
 }
 
+// are these notes to yourself, or should they be expanded on so they make sense?
+
 //Dependency Injection.
 //Use RemoteServiceLogger for production.
 //Use ConsoleLogger for Debug.
@@ -41,7 +43,7 @@ class RemoteServiceLogger: ErrorLogger {
 class ConsoleLogger: ErrorLogger {
     
     func log(errorMessage: String) {
-        //This will only get used in DEBG mode
+        //This will only get used in DEBUG mode
         print(errorMessage)
     }
     

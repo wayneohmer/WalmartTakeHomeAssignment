@@ -9,15 +9,15 @@
 import UIKit
 
 //regular class to mirror decodeable structs.
-class ProductsSumaryModel {
+class ProductsSummaryModel {
     
-    var productsSumaryStruct: ProductsSumaryStruct?
+    var productsSummaryStruct: ProductsSummaryStruct?
     var products = [ProductModel]()
 
-    convenience init(productsSumaryStruct: ProductsSumaryStruct) {
+    convenience init(productsSummaryStruct: ProductsSummaryStruct) {
         self.init()
-        self.productsSumaryStruct = productsSumaryStruct
-        for productStruct in productsSumaryStruct.products {
+        self.productsSummaryStruct = productsSummaryStruct
+        for productStruct in productsSummaryStruct.products {
             self.products.append(ProductModel(product: productStruct))
         }
     }
@@ -25,7 +25,7 @@ class ProductsSumaryModel {
 
 class ProductModel {
     
-    //directly to cache images.
+    //directory for caching images.
     static var imageDirectory = "\(NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0])/WalmartImages"
     
     var product: ProductStruct
@@ -53,11 +53,11 @@ class ProductModel {
         return UIImage(contentsOfFile: cachedImageUrl.relativePath)
     }
     
-    var shortDesciprion:NSAttributedString? {
-        return sizefontsFrom(string: self.convertHtmlFrom(string: self.product.shortDescription))
+    var shortDescription:NSAttributedString? {
+        return sizeFontsFrom(string: self.convertHtmlFrom(string: self.product.shortDescription))
     }
-    var longDesciprion:NSAttributedString? {
-        return sizefontsFrom(string: self.convertHtmlFrom(string: self.product.longDescription))
+    var longDescription:NSAttributedString? {
+        return sizeFontsFrom(string: self.convertHtmlFrom(string: self.product.longDescription))
     }
     
     //Don't save requests if fetch has failed.
@@ -75,7 +75,7 @@ class ProductModel {
     //This is a simplistic way to allow for dynamic fonts with HTML.
     //It assumes non bold text is "body" and bold is title2
     //This could be made much smarter.
-    func sizefontsFrom(string:NSMutableAttributedString?) -> NSAttributedString? {
+    func sizeFontsFrom(string:NSMutableAttributedString?) -> NSAttributedString? {
        
         guard let string = string else {
             return nil
@@ -95,6 +95,7 @@ class ProductModel {
         return string
     }
     
+    // comment here?
     func convertHtmlFrom(string: String?) -> NSMutableAttributedString? {
         if let htmlData = NSString(string: string ?? "").data(using: String.Encoding.unicode.rawValue) {
             do {
@@ -107,7 +108,8 @@ class ProductModel {
     }
     
     //This returns the image from the cache directory if it exists. If not, It fetches it
-    //from the server.  
+    //from the server.
+    // needs explnation of what you're doing with the closures
     func requestImage(closure:@escaping (UIImage, String) -> Void) {
         if let image = self.image, let url = self.imageUrl {
             closure(image, url.absoluteString)
