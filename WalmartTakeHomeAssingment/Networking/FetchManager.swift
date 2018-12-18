@@ -27,7 +27,7 @@ class FetchManager {
     var errorLogger = ErrorLogManager(errorLogger: RemoteServiceLogger())
     #endif
     
-    func fetchProducts(page: Int, successClosure:@escaping (ProductsSumaryModel) -> Void, failClosure:@escaping (String?) -> Void) {
+    func fetchProducts(page: Int, successClosure:@escaping (ProductsSummaryModel) -> Void, failClosure:@escaping (String?) -> Void) {
         
         let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
 
@@ -42,7 +42,7 @@ class FetchManager {
                 let productSummary = try self.processResponse(data: data, response: response, error: error)
                 successClosure(productSummary)
             } catch let error as FetchError {
-                failClosure(self.handle(error: error) )
+                failClosure(self.handleError(error: error) )
             } catch {
                 failClosure(nil)
             }
@@ -51,7 +51,7 @@ class FetchManager {
     }
     
     //break this out so it can be tested.
-    func processResponse(data:Data?, response:URLResponse?, error:Error?) throws -> ProductsSumaryModel {
+    func processResponse(data:Data?, response:URLResponse?, error:Error?) throws -> ProductsSummaryModel {
         
         if let error = error as NSError? {
             throw FetchError.message(error:error)
@@ -77,11 +77,11 @@ class FetchManager {
     }
     
     @discardableResult
-    func handle(error:FetchError) -> String? {
+    func handleError(error:FetchError) -> String? {
         
         switch error {
         case .message(let error):
-            //check for fake test message. This could be expanded to check for other usefull messages.
+            //check for fake test message. This could be expanded to check for other useful messages.
             if let description = error.userInfo["description"] as? String {
                 self.errorLogger.log(errorMessage: description)
             } else {
@@ -94,20 +94,20 @@ class FetchManager {
         case .noData:
             self.errorLogger.log(errorMessage: "Data was nil")
         case .decodeError(let error):
-            //This could be expanded to log more usefull messages.  
+            //This could be expanded to log more useful messages.  
             self.errorLogger.log(errorMessage: error.localizedDescription)
         }
         return nil
     }
     
-    func getProductsFrom(data:Data) throws -> ProductsSumaryModel {
+    func getProductsFrom(data:Data) throws -> ProductsSummaryModel {
         
         //If it were possible for data to contain JSON with and error message in it, we could
         //check for that here and throw an appropriate error.
         
         do {
             let productFeed = try JSONDecoder().decode(ProductsSumaryStruct.self, from: data)
-            let products = ProductsSumaryModel(productsSumaryStruct: productFeed)
+            let products = ProductsSummaryModel(productsSumaryStruct: productFeed)
             return products
         } catch let error as NSError {
             throw FetchError.decodeError(error: error)

@@ -12,10 +12,10 @@ protocol ErrorLogger {
     func log(errorMessage: String)
 }
 
-//Dependency Injection.
-//Use RemoteServiceLogger for production.
-//Use ConsoleLogger for Debug.
-//Use UnitTestLogger for unit tests.
+//A logging sytem using Dependency Injection.
+//RemoteServiceLogger is for production. It saves to a remote service.
+//Use ConsoleLogger for Debug. It prints messages to the console.
+//Use UnitTestLogger for unit tests. It saves the last message for processing.
 
 class ErrorLogManager {
     
@@ -41,7 +41,7 @@ class RemoteServiceLogger: ErrorLogger {
 class ConsoleLogger: ErrorLogger {
     
     func log(errorMessage: String) {
-        //This will only get used in DEBG mode
+        //This will only get used in DEBUG mode
         print(errorMessage)
     }
     

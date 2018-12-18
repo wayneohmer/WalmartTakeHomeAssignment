@@ -11,7 +11,7 @@ import XCTest
 
 class WalmartTakeHomeAssingmentTests: XCTestCase {
 
-    let networkManger = FetchManager()
+    let networkManager = FetchManager()
     let unitTestLogger = UnitTestLogger()
     let fakeUrl = URL(string: "http://test.com")!
     
@@ -36,7 +36,7 @@ class WalmartTakeHomeAssingmentTests: XCTestCase {
             XCTFail("Could not open JSON file- \(error)")
         }
         //Inject unit test logging into the networkManger
-        self.networkManger.errorLogger = ErrorLogManager(errorLogger: unitTestLogger)
+        self.networkManager.errorLogger = ErrorLogManager(errorLogger: unitTestLogger)
     }
     
     //Test non nil Error.
@@ -45,10 +45,10 @@ class WalmartTakeHomeAssingmentTests: XCTestCase {
         let response = HTTPURLResponse(url: self.fakeUrl, statusCode: 200, httpVersion: nil, headerFields: nil)
         let error = NSError(domain: "", code: 0, userInfo: ["description":"Test Error"])
         do {
-            let _ = try self.networkManger.processResponse(data: self.testData, response: response, error: error)
+            let _ = try self.networkManager.processResponse(data: self.testData, response: response, error: error)
             XCTFail("Succeeded with non nil NSError")
         } catch let error as FetchError {
-            self.networkManger.handle(error: error)
+            self.networkManager.handleError(error: error)
             XCTAssert(self.unitTestLogger.lastMessage == "Test Error")
         } catch {
             XCTFail("Missed NSError error")
@@ -67,10 +67,10 @@ class WalmartTakeHomeAssingmentTests: XCTestCase {
             let response = HTTPURLResponse(url: self.fakeUrl, statusCode: code, httpVersion: nil, headerFields: nil)
             
             do {
-                let _ = try self.networkManger.processResponse(data: self.testData, response: response, error: nil)
+                let _ = try self.networkManager.processResponse(data: self.testData, response: response, error: nil)
                 XCTFail("Status code:\(code) did not thow error")
             } catch let error as FetchError {
-                self.networkManger.handle(error: error)
+                self.networkManager.handleError(error: error)
                 XCTAssert(self.unitTestLogger.lastMessage == "Status Code: \(code)", self.unitTestLogger.lastMessage)
             } catch {
                 XCTFail("Missed statusCode error")
@@ -83,9 +83,9 @@ class WalmartTakeHomeAssingmentTests: XCTestCase {
         let  response = HTTPURLResponse(url: self.fakeUrl, statusCode: 200, httpVersion: nil, headerFields: nil)
         
         do {
-            let _ = try networkManger.processResponse(data: nil, response: response, error: nil)
+            let _ = try networkManager.processResponse(data: nil, response: response, error: nil)
         } catch let error as FetchError {
-            self.networkManger.handle(error: error)
+            self.networkManager.handleError(error: error)
         } catch {
             XCTFail("Missed Data nil error")
         }
@@ -96,7 +96,7 @@ class WalmartTakeHomeAssingmentTests: XCTestCase {
         let response = HTTPURLResponse(url: self.fakeUrl, statusCode: 200, httpVersion: nil, headerFields: nil)
         
         do {
-            let productSummary = try networkManger.processResponse(data: self.testData, response: response, error: nil)
+            let productSummary = try networkManager.processResponse(data: self.testData, response: response, error: nil)
             XCTAssert(productSummary.products.count == 2, "Wrong product count")
             //There could be a lot more detail checking here.
             

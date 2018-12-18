@@ -46,7 +46,7 @@ class MasterViewController: UITableViewController, UITableViewDataSourcePrefetch
         fetchManager.fetchProducts(page:self.lastPageRequested, successClosure:self.handle, failClosure:self.networkFailure )
     }
 
-    func handle(productSummary:ProductsSumaryModel) {
+    func handle(productSummary:ProductsSummaryModel) {
         DispatchQueue.main.async {
             self.lastPageFetched = productSummary.productsSumaryStruct?.pageNumber ?? 0
             self.totalProducts = productSummary.productsSumaryStruct?.totalProducts ?? self.totalProducts
