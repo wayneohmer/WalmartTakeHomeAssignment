@@ -1,6 +1,6 @@
 //
 //  ErrorLogManager.swift
-//  WalmartTakeHomeAssingment
+//  WalmartTakeHomeAssignment
 //
 //  Created by Wayne Ohmer on 12/14/18.
 //  Copyright © 2018 Wayne Ohmer. All rights reserved.

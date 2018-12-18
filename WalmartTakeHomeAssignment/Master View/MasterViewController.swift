@@ -1,6 +1,6 @@
 //
 //  MasterViewController.swift
-//  WalmartTakeHomeAssingment
+//  WalmartTakeHomeAssignment
 //
 //  Created by Wayne Ohmer on 12/8/18.
 //  Copyright © 2018 Wayne Ohmer. All rights reserved.

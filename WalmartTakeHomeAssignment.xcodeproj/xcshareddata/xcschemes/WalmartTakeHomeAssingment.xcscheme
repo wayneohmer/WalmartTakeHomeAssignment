@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2B39BEFE21BC546E00C01CB7"
-               BuildableName = "WalmartTakeHomeAssingment.app"
-               BlueprintName = "WalmartTakeHomeAssingment"
-               ReferencedContainer = "container:WalmartTakeHomeAssingment.xcodeproj">
+               BuildableName = "WalmartTakeHomeAssignment.app"
+               BlueprintName = "WalmartTakeHomeAssignment"
+               ReferencedContainer = "container:WalmartTakeHomeAssignment.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2B39BF1421BC546F00C01CB7"
-               BuildableName = "WalmartTakeHomeAssingmentTests.xctest"
-               BlueprintName = "WalmartTakeHomeAssingmentTests"
-               ReferencedContainer = "container:WalmartTakeHomeAssingment.xcodeproj">
+               BuildableName = "WalmartTakeHomeAssignmentTests.xctest"
+               BlueprintName = "WalmartTakeHomeAssignmentTests"
+               ReferencedContainer = "container:WalmartTakeHomeAssignment.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2B39BEFE21BC546E00C01CB7"
-            BuildableName = "WalmartTakeHomeAssingment.app"
-            BlueprintName = "WalmartTakeHomeAssingment"
-            ReferencedContainer = "container:WalmartTakeHomeAssingment.xcodeproj">
+            BuildableName = "WalmartTakeHomeAssignment.app"
+            BlueprintName = "WalmartTakeHomeAssignment"
+            ReferencedContainer = "container:WalmartTakeHomeAssignment.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -67,9 +67,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2B39BEFE21BC546E00C01CB7"
-            BuildableName = "WalmartTakeHomeAssingment.app"
-            BlueprintName = "WalmartTakeHomeAssingment"
-            ReferencedContainer = "container:WalmartTakeHomeAssingment.xcodeproj">
+            BuildableName = "WalmartTakeHomeAssignment.app"
+            BlueprintName = "WalmartTakeHomeAssignment"
+            ReferencedContainer = "container:WalmartTakeHomeAssignment.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -86,9 +86,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2B39BEFE21BC546E00C01CB7"
-            BuildableName = "WalmartTakeHomeAssingment.app"
-            BlueprintName = "WalmartTakeHomeAssingment"
-            ReferencedContainer = "container:WalmartTakeHomeAssingment.xcodeproj">
+            BuildableName = "WalmartTakeHomeAssignment.app"
+            BlueprintName = "WalmartTakeHomeAssignment"
+            ReferencedContainer = "container:WalmartTakeHomeAssignment.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

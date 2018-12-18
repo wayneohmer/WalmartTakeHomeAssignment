@@ -13,7 +13,7 @@
 		2B39BF0A21BC546E00C01CB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B39BF0821BC546E00C01CB7 /* Main.storyboard */; };
 		2B39BF0C21BC546F00C01CB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B39BF0B21BC546F00C01CB7 /* Assets.xcassets */; };
 		2B39BF0F21BC546F00C01CB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B39BF0D21BC546F00C01CB7 /* LaunchScreen.storyboard */; };
-		2B39BF1A21BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.swift */; };
+		2B39BF1A21BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests.swift */; };
 		2B39BF2521BC54E700C01CB7 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B39BF2421BC54E700C01CB7 /* TestData.json */; };
 		2B39BF2721BC55FC00C01CB7 /* ProductsStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B39BF2621BC55FC00C01CB7 /* ProductsStruct.swift */; };
 		2B39BF2821BC593E00C01CB7 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B39BF2421BC54E700C01CB7 /* TestData.json */; };
@@ -35,7 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B39BEFF21BC546E00C01CB7 /* WalmartTakeHomeAssingment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalmartTakeHomeAssingment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B39BEFF21BC546E00C01CB7 /* WalmartTakeHomeAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalmartTakeHomeAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B39BF0221BC546E00C01CB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B39BF0421BC546E00C01CB7 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		2B39BF0621BC546E00C01CB7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -43,8 +43,8 @@
 		2B39BF0B21BC546F00C01CB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B39BF0E21BC546F00C01CB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B39BF1021BC546F00C01CB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B39BF1521BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalmartTakeHomeAssingmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalmartTakeHomeAssingmentTests.swift; sourceTree = "<group>"; };
+		2B39BF1521BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WalmartTakeHomeAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalmartTakeHomeAssignmentTests.swift; sourceTree = "<group>"; };
 		2B39BF1B21BC546F00C01CB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B39BF2421BC54E700C01CB7 /* TestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestData.json; sourceTree = "<group>"; };
 		2B39BF2621BC55FC00C01CB7 /* ProductsStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsStruct.swift; sourceTree = "<group>"; };
@@ -95,8 +95,8 @@
 		2B39BEF621BC546E00C01CB7 = {
 			isa = PBXGroup;
 			children = (
-				2B39BF0121BC546E00C01CB7 /* WalmartTakeHomeAssingment */,
-				2B39BF1821BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests */,
+				2B39BF0121BC546E00C01CB7 /* WalmartTakeHomeAssignment */,
+				2B39BF1821BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests */,
 				2B39BF0021BC546E00C01CB7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,13 +104,13 @@
 		2B39BF0021BC546E00C01CB7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2B39BEFF21BC546E00C01CB7 /* WalmartTakeHomeAssingment.app */,
-				2B39BF1521BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.xctest */,
+				2B39BEFF21BC546E00C01CB7 /* WalmartTakeHomeAssignment.app */,
+				2B39BF1521BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2B39BF0121BC546E00C01CB7 /* WalmartTakeHomeAssingment */ = {
+		2B39BF0121BC546E00C01CB7 /* WalmartTakeHomeAssignment */ = {
 			isa = PBXGroup;
 			children = (
 				2B39BF0221BC546E00C01CB7 /* AppDelegate.swift */,
@@ -122,17 +122,17 @@
 				2B39BF0D21BC546F00C01CB7 /* LaunchScreen.storyboard */,
 				2B39BF1021BC546F00C01CB7 /* Info.plist */,
 			);
-			path = WalmartTakeHomeAssingment;
+			path = WalmartTakeHomeAssignment;
 			sourceTree = "<group>";
 		};
-		2B39BF1821BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests */ = {
+		2B39BF1821BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests */ = {
 			isa = PBXGroup;
 			children = (
-				2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.swift */,
+				2B39BF1921BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests.swift */,
 				2B39BF1B21BC546F00C01CB7 /* Info.plist */,
 				2B39BF2421BC54E700C01CB7 /* TestData.json */,
 			);
-			path = WalmartTakeHomeAssingmentTests;
+			path = WalmartTakeHomeAssignmentTests;
 			sourceTree = "<group>";
 		};
 		2B39BF2E21BC628600C01CB7 /* Models */ = {
@@ -156,9 +156,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2B39BEFE21BC546E00C01CB7 /* WalmartTakeHomeAssingment */ = {
+		2B39BEFE21BC546E00C01CB7 /* WalmartTakeHomeAssignment */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2B39BF1E21BC546F00C01CB7 /* Build configuration list for PBXNativeTarget "WalmartTakeHomeAssingment" */;
+			buildConfigurationList = 2B39BF1E21BC546F00C01CB7 /* Build configuration list for PBXNativeTarget "WalmartTakeHomeAssignment" */;
 			buildPhases = (
 				2B39BEFB21BC546E00C01CB7 /* Sources */,
 				2B39BEFC21BC546E00C01CB7 /* Frameworks */,
@@ -168,14 +168,14 @@
 			);
 			dependencies = (
 			);
-			name = WalmartTakeHomeAssingment;
+			name = WalmartTakeHomeAssignment;
 			productName = WalmartTakeHomeAssingment;
-			productReference = 2B39BEFF21BC546E00C01CB7 /* WalmartTakeHomeAssingment.app */;
+			productReference = 2B39BEFF21BC546E00C01CB7 /* WalmartTakeHomeAssignment.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2B39BF1421BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests */ = {
+		2B39BF1421BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2B39BF2121BC546F00C01CB7 /* Build configuration list for PBXNativeTarget "WalmartTakeHomeAssingmentTests" */;
+			buildConfigurationList = 2B39BF2121BC546F00C01CB7 /* Build configuration list for PBXNativeTarget "WalmartTakeHomeAssignmentTests" */;
 			buildPhases = (
 				2B39BF1121BC546F00C01CB7 /* Sources */,
 				2B39BF1221BC546F00C01CB7 /* Frameworks */,
@@ -186,9 +186,9 @@
 			dependencies = (
 				2B39BF1721BC546F00C01CB7 /* PBXTargetDependency */,
 			);
-			name = WalmartTakeHomeAssingmentTests;
+			name = WalmartTakeHomeAssignmentTests;
 			productName = WalmartTakeHomeAssingmentTests;
-			productReference = 2B39BF1521BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.xctest */;
+			productReference = 2B39BF1521BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -210,7 +210,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2B39BEFA21BC546E00C01CB7 /* Build configuration list for PBXProject "WalmartTakeHomeAssingment" */;
+			buildConfigurationList = 2B39BEFA21BC546E00C01CB7 /* Build configuration list for PBXProject "WalmartTakeHomeAssignment" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -223,8 +223,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2B39BEFE21BC546E00C01CB7 /* WalmartTakeHomeAssingment */,
-				2B39BF1421BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests */,
+				2B39BEFE21BC546E00C01CB7 /* WalmartTakeHomeAssignment */,
+				2B39BF1421BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests */,
 			);
 		};
 /* End PBXProject section */
@@ -272,7 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B39BF1A21BC546F00C01CB7 /* WalmartTakeHomeAssingmentTests.swift in Sources */,
+				2B39BF1A21BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +281,7 @@
 /* Begin PBXTargetDependency section */
 		2B39BF1721BC546F00C01CB7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2B39BEFE21BC546E00C01CB7 /* WalmartTakeHomeAssingment */;
+			target = 2B39BEFE21BC546E00C01CB7 /* WalmartTakeHomeAssignment */;
 			targetProxy = 2B39BF1621BC546F00C01CB7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -428,12 +428,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UC39945CUV;
-				INFOPLIST_FILE = WalmartTakeHomeAssingment/Info.plist;
+				INFOPLIST_FILE = WalmartTakeHomeAssignment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trialByFyre.WalmartTakeHomeAssingment;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trialByFyre.WalmartTakeHomeAssignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -446,12 +446,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UC39945CUV;
-				INFOPLIST_FILE = WalmartTakeHomeAssingment/Info.plist;
+				INFOPLIST_FILE = WalmartTakeHomeAssignment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.trialByFyre.WalmartTakeHomeAssingment;
+				PRODUCT_BUNDLE_IDENTIFIER = com.trialByFyre.WalmartTakeHomeAssignment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -475,7 +475,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WalmartTakeHomeAssingment.app/WalmartTakeHomeAssingment";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WalmartTakeHomeAssignment.app/WalmartTakeHomeAssignment";
 			};
 			name = Debug;
 		};
@@ -496,14 +496,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WalmartTakeHomeAssingment.app/WalmartTakeHomeAssingment";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WalmartTakeHomeAssignment.app/WalmartTakeHomeAssignment";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2B39BEFA21BC546E00C01CB7 /* Build configuration list for PBXProject "WalmartTakeHomeAssingment" */ = {
+		2B39BEFA21BC546E00C01CB7 /* Build configuration list for PBXProject "WalmartTakeHomeAssignment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B39BF1C21BC546F00C01CB7 /* Debug */,
@@ -512,7 +512,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2B39BF1E21BC546F00C01CB7 /* Build configuration list for PBXNativeTarget "WalmartTakeHomeAssingment" */ = {
+		2B39BF1E21BC546F00C01CB7 /* Build configuration list for PBXNativeTarget "WalmartTakeHomeAssignment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B39BF1F21BC546F00C01CB7 /* Debug */,
@@ -521,7 +521,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2B39BF2121BC546F00C01CB7 /* Build configuration list for PBXNativeTarget "WalmartTakeHomeAssingmentTests" */ = {
+		2B39BF2121BC546F00C01CB7 /* Build configuration list for PBXNativeTarget "WalmartTakeHomeAssignmentTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2B39BF2221BC546F00C01CB7 /* Debug */,

@@ -1,15 +1,15 @@
 //
-//  WalmartTakeHomeAssingmentTests.swift
-//  WalmartTakeHomeAssingmentTests
+//  WalmartTakeHomeAssignmentTests.swift
+//  WalmartTakeHomeAssignmentTests
 //
 //  Created by Wayne Ohmer on 12/8/18.
 //  Copyright © 2018 Wayne Ohmer. All rights reserved.
 //
 
 import XCTest
-@testable import WalmartTakeHomeAssingment
+@testable import WalmartTakeHomeAssignment
 
-class WalmartTakeHomeAssingmentTests: XCTestCase {
+class WalmartTakeHomeAssignmentTests: XCTestCase {
 
     let networkManager = FetchManager()
     let unitTestLogger = UnitTestLogger()
