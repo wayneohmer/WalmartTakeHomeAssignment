@@ -21,6 +21,7 @@
 		2B39BF3021BC62C600C01CB7 /* FetchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B39BF2F21BC62C600C01CB7 /* FetchManager.swift */; };
 		2B39BF3221BC64D900C01CB7 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B39BF3121BC64D900C01CB7 /* ProductTableViewCell.swift */; };
 		2BDDF78F21C46206006CBAB7 /* ErrorLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDDF78E21C46206006CBAB7 /* ErrorLogManager.swift */; };
+		2BDDF79421C95C67006CBAB7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2BDDF79321C95C67006CBAB7 /* README.md */; };
 		2BF4873821BC7A8800A239DD /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF4873721BC7A8800A239DD /* Detail.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		2B39BF2F21BC62C600C01CB7 /* FetchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchManager.swift; sourceTree = "<group>"; };
 		2B39BF3121BC64D900C01CB7 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		2BDDF78E21C46206006CBAB7 /* ErrorLogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogManager.swift; sourceTree = "<group>"; };
+		2BDDF79321C95C67006CBAB7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2BF4873721BC7A8800A239DD /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 		2B39BEF621BC546E00C01CB7 = {
 			isa = PBXGroup;
 			children = (
+				2BDDF79321C95C67006CBAB7 /* README.md */,
 				2B39BF0121BC546E00C01CB7 /* WalmartTakeHomeAssignment */,
 				2B39BF1821BC546F00C01CB7 /* WalmartTakeHomeAssignmentTests */,
 				2B39BF0021BC546E00C01CB7 /* Products */,
@@ -234,6 +237,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BDDF79421C95C67006CBAB7 /* README.md in Resources */,
 				2B39BF0F21BC546F00C01CB7 /* LaunchScreen.storyboard in Resources */,
 				2B39BF0C21BC546F00C01CB7 /* Assets.xcassets in Resources */,
 				2B39BF0A21BC546E00C01CB7 /* Main.storyboard in Resources */,
